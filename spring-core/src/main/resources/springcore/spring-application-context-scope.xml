@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020. All rights reserved .
+  ~ This code developed by Vijay Gupta for learning purpose only.
+  ~ Certification: Spring Framework Certification Training
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="beanScope" class="com.vijay.learn.spring.core.beanscope.BeanScope" scope="prototype"/>
+</beans>

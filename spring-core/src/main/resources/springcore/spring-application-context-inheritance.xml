@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020. All rights reserved .
+  ~ This code developed by Vijay Gupta for learning purpose only.
+  ~ Certification: Spring Framework Certification Training
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="father" class="com.vijay.learn.spring.core.beaninheritance.Father">
+        <property name="firstName" value="Amar"/>
+        <property name="lastName" value="Singh"/>
+    </bean>
+
+    <bean id="child" parent="father">
+        <property name="firstName" value="Vinay"/>
+    </bean>
+</beans>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020. All rights reserved .
+  ~ This code developed by Vijay Gupta for learning purpose only.
+  ~ Certification: Spring Framework Certification Training
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="car" class="com.vijay.learn.spring.core.beandi.Car">
+        <property name="name" value="Sudan" />
+        <property name="perDayCost" value="2000" />
+    </bean>
+
+    <bean id="user" class="com.vijay.learn.spring.core.beandi.User">
+        <property name="userName" value="Vijay Gupta" />
+        <constructor-arg ref="car" /><!--Constructor based injection-->
+        <!-- <property name="car" ref="car" />--><!-- Setter based injection-->
+    </bean>
+
+    <bean id="student" class="com.vijay.learn.spring.core.beandi.Student">
+        <property name="name" value="Amar Singh" />
+        <property name="id" value="454555" />
+        <property name="hostel" ref="hostel" /><!-- Setter based injection-->
+    </bean>
+
+    <bean id="hostel" class="com.vijay.learn.spring.core.beandi.Hostel" autowire-candidate="false">
+        <property name="city" value="Mumbai"/>
+        <property name="hostelName" value="Late Bhausaheb Hiray's Trust"/>
+    </bean>
+
+<!--    inner bean example- generally we do not use it-->
+    <bean id="studentInnerBean" class="com.vijay.learn.spring.core.beandi.Student">
+        <property name="name" value="Akash Gupta" />
+        <property name="id" value="45879644" />
+        <property name="hostel">
+            <bean id="hostelInnerBean" class="com.vijay.learn.spring.core.beandi.Hostel" autowire-candidate="false">
+                <property name="city" value="INNER BEAN - Mumbai"/>
+                <property name="hostelName" value="INNER BEAN - Late Bhausaheb Hiray's Trust"/>
+            </bean>
+        </property>
+    </bean>
+
+    <alias name="student" alias="student_alias"/>
+
+    <bean id="studentIdRef" class="com.vijay.learn.spring.core.beandi.Student">
+<!--        <property name="name" value="Amar Singh" />-->
+        <property name="id" value="3636654" />
+        <property name="hostel" ref="hostel" /><!-- Setter based injection-->
+        <property name="name">
+            <idref bean="hostel"/>
+        </property>
+    </bean>
+
+    <bean id="collectionsDI" class="com.vijay.learn.spring.core.beandi.CollectionsDI">
+        <property name="listOfStudents">
+            <list>
+                <value>Vijay Gupta</value>
+                <value>Amar Singh</value>
+                <value>Amit Singh</value>
+            </list>
+        </property>
+    </bean>
+</beans>

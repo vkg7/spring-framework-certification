@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020. All rights reserved .
+  ~ This code developed by Vijay Gupta for learning purpose only.
+  ~ Certification: Spring Framework Certification Training
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="studentAutoWiringByName" class="com.vijay.learn.spring.core.beandi.Student" autowire="byName"><!--Autowiring byName-->
+        <property name="name" value="Amar Singh" />
+        <property name="id" value="454555" />
+    </bean>
+
+    <bean id="studentAutoWiringByType" class="com.vijay.learn.spring.core.beandi.Student" autowire="byType"><!--Autowiring byType-->
+        <property name="name" value="Vinayak" />
+        <property name="id" value="997877445" />
+    </bean>
+
+    <bean id="studentAutoWiringByConstructor" class="com.vijay.learn.spring.core.beandi.Student" autowire="constructor"><!--Autowiring constructor-->
+        <constructor-arg value="88987989"/>
+        <constructor-arg value="Vijay Gupta"/>
+    </bean>
+
+    <bean id="hostel" class="com.vijay.learn.spring.core.beandi.Hostel">
+        <property name="city" value="Navi Mumbai"/>
+        <property name="hostelName" value="Late Bhausaheb Hiray's Trust"/>
+    </bean>
+</beans>
