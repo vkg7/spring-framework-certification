@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2020. All rights reserved .
+  ~ This code developed by Vijay Gupta for learning purpose only.
+  ~ Certification: Spring Framework Certification Training
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- We don't need to this; This is required only in annotation based AOP support -->
+    <!--    <context:component-scan base-package="com.vijay.learn.aop.aspectjaop"/>-->
+    <!--    <aop:aspectj-autoproxy/>-->
+
+    <bean id="businessLogic" class="com.vijay.learn.spring.aop.aspectjaop.BusinessLogic"/>
+    <bean id="loggingAspect" class="com.vijay.learn.spring.aop.aspectjaop.aspects.LoggingAspect"/>
+
+    <aop:config>
+
+        <!-- Spring AOP Pointcut definitions -->
+        <aop:pointcut id="loggingOnBusinessLoginc"
+                      expression="execution(* com.vijay.learn.spring.aop.aspectjaop.BusinessLogic.getBusinessLogic(..))" />
+
+        <!-- Spring AOP aspect 1 -->
+        <aop:aspect id="loggingAspect" ref="loggingAspect">
+
+            <!-- Spring AOP advises -->
+            <aop:before pointcut-ref="loggingOnBusinessLoginc" method="loggingBeforeBusinessLogic" />
+            <aop:after pointcut-ref="loggingOnBusinessLoginc" method="loggingAfterBusinessLogic" />
+            <aop:after-returning pointcut-ref="loggingOnBusinessLoginc" method="loggingAfterReturningBusinessLogic"/>
+            <aop:around pointcut-ref="loggingOnBusinessLoginc" method="loggingAroundBusinessLogic"/>
+            <aop:after-throwing pointcut-ref="loggingOnBusinessLoginc" method="loggingAfterBusinessLogicException"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
