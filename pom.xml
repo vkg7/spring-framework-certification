@@ -12,6 +12,7 @@
         <module>spring-core</module>
         <module>spring-aop</module>
         <module>spring-jdbc</module>
+        <module>spring-jdbctemplate</module>
     </modules>
 
     <properties>
