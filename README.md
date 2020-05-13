@@ -8,3 +8,4 @@ The application have below Spring Features.
 2) Spring AOP and AspectJ AOP
 3) Spring DAO/JDBC
 4) Spring JdbcTemplate & NamedParameterJdbcTemplate Example with all CRUD operation
+5) Batch Insert of more then 2000 records using JdbcTemplate
