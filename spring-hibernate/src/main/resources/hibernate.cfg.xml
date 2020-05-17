@@ -13,6 +13,7 @@
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
+<!--    STEP-1-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -21,6 +22,7 @@
 
     </bean>
 
+<!--    STEP-2-->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan">
@@ -37,6 +39,7 @@
         </property>
     </bean>
 
+<!--    STEP-3-->
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
